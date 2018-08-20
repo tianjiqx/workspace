@@ -58,7 +58,34 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 
-" SuperTab
+
+" vim-go config
+
+let g:go_fmt_command = "goimports"
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+
+
+let mapleader=","
+syntax on
+
+au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+
+au FileType go nmap <C-]> <Plug>(go-def)
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+
+
+" SuperTab config
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabRetainCompletionType=2
@@ -66,7 +93,41 @@ let g:SuperTabRetainCompletionType=2
 
 " tagbar
 
-nmap <F9> :TagbarToggle<CR>
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+\ }
+
+
+
+
+
+nmap <F8> :TagbarToggle<CR>
+
+
 
 
 " color  config
@@ -117,6 +178,20 @@ set incsearch
 set cindent
 set tabstop=2
 set shiftwidth=2
+
+" editor
+set t_Co=256     " Explicitly tell vim that the terminal has 256 colors "
+set mouse=a      " use mouse in all modes"
+set scrolloff=5  " 5 lines above/below cursor when scrolling"
+set showmatch    " show matching bracket (briefly jump)
+set showcmd      " show typed command in status bar
+set title        " show file in titlebar"
+set fdm=marker   " flod  
+
+
+
+
+
 
 
 
