@@ -67,6 +67,10 @@ let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
+let g:go_highlight_function_calls = 1
+
+let g:go_auto_type_info = 1
+let g:go_auto_sameids = 1
 
 
 let mapleader=","
@@ -83,6 +87,12 @@ au FileType go nmap <C-]> <Plug>(go-def)
 au FileType go nmap <Leader>ds <Plug>(go-def-split)
 au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
 au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+
+au FileType go nmap <Leader>i <Plug>(go-info)
+" import tool show interface implements list
+au FileType go nmap <Leader>s <Plug>(go-implements)
+au FileType go nmap <Leader>e <Plug>(go-rename)
+
 
 
 " SuperTab config
@@ -186,12 +196,26 @@ set scrolloff=5  " 5 lines above/below cursor when scrolling"
 set showmatch    " show matching bracket (briefly jump)
 set showcmd      " show typed command in status bar
 set title        " show file in titlebar"
-set fdm=marker   " flod  
+set fdm=marker   " flod
+
+" share clipboard
+set clipboard+=unnamed 
+
+" updatetime  100ms
+set updatetime=100
 
 
 
+" smart way to move between windows
+map<C-j> <C-W>j
+map<C-k> <C-W>k
+map<C-h> <C-W>h
+map<C-l> <C-W>l
 
 
+" 
+nnoremap <F2> :set nonumber! number?<CR>
+nnoremap <F3> :set wrap! wrap?<CR>
 
 
 
