@@ -23,7 +23,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-" support golang 
+" support golang
 Plugin 'fatih/vim-go'
 
 " auto complete
@@ -40,10 +40,10 @@ Plugin 'liuchengxu/space-vim-dark'
 " file search
 Plugin 'kien/ctrlp.vim'
 
-"  
+"
 Plugin 'Raimondi/delimitMate'
 
-" math{},  % goto
+" match{},  % goto
 Plugin 'tmhedberg/matchit'
 
 "
@@ -56,10 +56,20 @@ Plugin 'rking/ag.vim'
 "markdown
 Plugin 'iamcco/markdown-preview.vim'
 
-" c++ highlight 
+" c++ highlight
 Plugin 'octol/vim-cpp-enhanced-highlight'
 
-"cpp flod 
+" code completion for c++
+
+
+" code auto format
+Plugin 'Chiel92/vim-autoformat'
+
+" 基于缩进或语法进行代码折叠
+"set foldmethod = indent
+"set foldmethod=syntax
+
+"cpp flod
 "too slow
 "Plugin 'LucHermitte/VimFold4C'
 
@@ -82,7 +92,7 @@ let g:go_highlight_function_calls = 1
 let g:go_auto_type_info = 1
 let g:go_auto_sameids = 1
 
-"let g:go_fmt_experimental = 1 
+"let g:go_fmt_experimental = 1
 
 let mapleader=","
 syntax on
@@ -117,32 +127,32 @@ let g:SuperTabRetainCompletionType=2
 " tagbar
 let g:tagbar_ctags_bin='/usr/bin/ctags'
 let g:tagbar_type_go = {
-    \ 'ctagstype' : 'go',
-    \ 'kinds'     : [
-        \ 'p:package',
-        \ 'i:imports:1',
-        \ 'c:constants',
-        \ 'v:variables',
-        \ 't:types',
-        \ 'n:interfaces',
-        \ 'w:fields',
-        \ 'e:embedded',
-        \ 'm:methods',
-        \ 'r:constructor',
-        \ 'f:functions'
-    \ ],
-    \ 'sro' : '.',
-    \ 'kind2scope' : {
-        \ 't' : 'ctype',
-        \ 'n' : 'ntype'
-    \ },
-    \ 'scope2kind' : {
-        \ 'ctype' : 't',
-        \ 'ntype' : 'n'
-    \ },
-    \ 'ctagsbin'  : 'gotags',
-    \ 'ctagsargs' : '-sort -silent'
-\ }
+      \ 'ctagstype' : 'go',
+      \ 'kinds'     : [
+      \ 'p:package',
+      \ 'i:imports:1',
+      \ 'c:constants',
+      \ 'v:variables',
+      \ 't:types',
+      \ 'n:interfaces',
+      \ 'w:fields',
+      \ 'e:embedded',
+      \ 'm:methods',
+      \ 'r:constructor',
+      \ 'f:functions'
+      \ ],
+      \ 'sro' : '.',
+      \ 'kind2scope' : {
+      \ 't' : 'ctype',
+      \ 'n' : 'ntype'
+      \ },
+      \ 'scope2kind' : {
+      \ 'ctype' : 't',
+      \ 'ntype' : 'n'
+      \ },
+      \ 'ctagsbin'  : 'gotags',
+      \ 'ctagsargs' : '-sort -silent'
+      \ }
 
 
 
@@ -174,7 +184,7 @@ let NERDTreeShowHidden=1
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.gz     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_map = '<c-p>' 
+let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
 " dlelimiatemate
@@ -197,7 +207,17 @@ let g:cpp_member_variable_highlight = 1
 let g:cpp_concepts_highlight = 1
 let g:cpp_experimental_simple_template_highlight = 1
 
-"cpp flod 
+
+" vim-autoformat
+noremap <F6> :Autoformat<CR>
+
+let g:formatdef_harttle = '"astyle --style=attach --pad-oper"'
+let g:formatters_cpp = ['harttle']
+"let g:formatters_java = ['harttle']
+
+
+
+"cpp flod
 "let g:fold_options = {
 ""   \ 'fold_blank': 0,
 ""   \ 'fold_includes': 0,
@@ -215,12 +235,12 @@ let g:cpp_experimental_simple_template_highlight = 1
 " show line number
 set number
 
-" 
+"
 set cursorline
 
-" search 
-set hlsearch  
-set incsearch  
+" search
+set hlsearch
+set incsearch
 
 " tab
 set cindent
@@ -241,7 +261,7 @@ set fdm=marker   " flod
 
 
 " share clipboard
-set clipboard+=unnamed 
+set clipboard+=unnamed
 
 " updatetime  100ms
 set updatetime=100
@@ -255,12 +275,12 @@ map<C-k> <C-W>k
 map<C-h> <C-W>h
 map<C-l> <C-W>l
 
-" copy 
+" copy
 vmap <leader>f "+y
 nmap <leader>v "+gp
 
 
-" 
+"
 nnoremap <F2> :set nonumber! number?<CR>
 nnoremap <F3> :set wrap! wrap?<CR>
 
