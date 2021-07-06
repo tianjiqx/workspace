@@ -196,8 +196,8 @@ au FileType python let b:delimitMate_nesting_quotes = ['"']
 let g:airline_theme='murmur'
 
 "markdown-preview
-let g:mkdp_auto_start=1
-let g:mkdp_auto_open=1
+let g:mkdp_auto_start=0
+let g:mkdp_auto_open=0
 
 
 "c++ high light set
@@ -284,5 +284,8 @@ nmap <leader>v "+gp
 nnoremap <F2> :set nonumber! number?<CR>
 nnoremap <F3> :set wrap! wrap?<CR>
 
+
+" fix backupspace invalid
+set backspace=indent,eol,start
 
 
