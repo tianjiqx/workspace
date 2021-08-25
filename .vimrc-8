@@ -161,7 +161,7 @@ nmap <F8> :TagbarToggle<CR>
 
 " Ctags
 nmap <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-
+set tags=./.tags;,.tags
 
 " color  config
 " colorscheme molokai
