@@ -52,7 +52,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 "
-Plug 'rking/ag.vim'
+"Plug 'rking/ag.vim'
+Plug 'mileszs/ack.vim'
 
 "markdown
 Plug 'iamcco/markdown-preview.vim'
@@ -124,7 +125,7 @@ let g:SuperTabRetainCompletionType=2
 
 
 " tagbar
-let g:tagbar_ctags_bin='/usr/bin/ctags'
+let g:tagbar_ctags_bin='ctags'
 let g:tagbar_type_go = {
       \ 'ctagstype' : 'go',
       \ 'kinds'     : [
@@ -172,6 +173,7 @@ hi Comment guifg=#5C6370 ctermfg=59
 " NERDTree config
 autocmd vimenter * NERDTree
 autocmd VimEnter * wincmd w
+autocmd BufEnter * lcd %:p:h
 map <F10> :NERDTreeToggle<CR>
 " show hidden file
 let NERDTreeShowHidden=1
@@ -233,9 +235,10 @@ let g:formatters_cpp = ['harttle']
 let g:Lf_ShortcutF = '<c-p>'
 let g:Lf_ShortcutB = '<m-n>'
 noremap <c-n> :LeaderfMru<cr>
-noremap <m-p> :LeaderfFunction!<cr>
-noremap <m-n> :LeaderfBuffer<cr>
-noremap <m-m> :LeaderfTag<cr>
+noremap <F5> :LeaderfFunction<cr>
+noremap <F6> :LeaderfLine<cr>
+"noremap <m-n> :LeaderfBuffer<cr>
+"noremap <m-m> :LeaderfTag<cr>
 let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
 
 let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
@@ -246,6 +249,14 @@ let g:Lf_ShowRelativePath = 0
 let g:Lf_HideHelp = 1
 let g:Lf_StlColorscheme = 'powerline'
 let g:Lf_PreviewResult = {'Function':0, 'BufTag':0}
+
+
+" ack config
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
+noremap <leader>a :Ack!<cr>
 
 
 " vim  common config
